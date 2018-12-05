@@ -6,7 +6,7 @@ export class SimpleScene extends Phaser.Scene {
       physics: {
         arcade: {
           debug: true,
-          gravity: { y: 0}
+          gravity: { y: 100}
         }
       }
     });
@@ -20,7 +20,13 @@ export class SimpleScene extends Phaser.Scene {
     this.add.text(100, 100, 'Hello Player 1!', { fill: '#0f0' });
     this.player = this.physics.add.sprite(100, 450, 'cokecan');
     this.cursors = this.input.keyboard.createCursorKeys();
-    console.log(this.player)
+    var platforms = this.physics.add.staticGroup();
+    platforms.create(400, 568, 'ground').setScale(2).refreshBody();
+
+    platforms.create(600, 400, 'ground');
+    platforms.create(50, 250, 'ground');
+    platforms.create(750, 220, 'ground');
+    this.physics.add.collider(this.player, platforms);
   }
 
   update() {
@@ -28,12 +34,12 @@ export class SimpleScene extends Phaser.Scene {
     if (this.cursors.up.isDown)
     {
         console.log('up');
-        this.player.setVelocityY(-100)
+        this.player.setVelocityY(-100);
     }
     else if (this.cursors.down.isDown)
     {
         console.log('down');
-        this.player.setVelocityY(100)
+        this.player.setVelocityY(100);
     }
 
     if (this.cursors.left.isDown)
@@ -44,7 +50,7 @@ export class SimpleScene extends Phaser.Scene {
     else if (this.cursors.right.isDown)
     {
         console.log('right');
-        this.player.setVelocityX(100)
+        this.player.setVelocityX(100);
     }
 
   }
