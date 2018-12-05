@@ -1,13 +1,26 @@
 export class SimpleScene extends Phaser.Scene {
+
+  constructor() {
+    super({
+      key: 'level1',
+      physics: {
+        arcade: {
+          debug: true,
+          gravity: { y: 0}
+        }
+      }
+    });
+  }
+
   preload() {
     this.load.image('cokecan', 'assets/cokecan.png');
   }
 
   create() {
-    console.log(this)
-    this.add.text(100, 100, 'Hello Phaser!', { fill: '#0f0' });
-    this.player = this.add.sprite(200, 400, 'cokecan');
+    this.add.text(100, 100, 'Hello Player 1!', { fill: '#0f0' });
+    this.player = this.physics.add.sprite(100, 450, 'cokecan');
     this.cursors = this.input.keyboard.createCursorKeys();
+    console.log(this.player)
   }
 
   update() {
@@ -15,23 +28,23 @@ export class SimpleScene extends Phaser.Scene {
     if (this.cursors.up.isDown)
     {
         console.log('up');
-        this.player.body.moveUp(300)
+        this.player.setVelocityY(-100)
     }
     else if (this.cursors.down.isDown)
     {
-        console.log('right');
-        this.player.body.moveDown(300);
+        console.log('down');
+        this.player.setVelocityY(100)
     }
 
     if (this.cursors.left.isDown)
     {
         console.log('left');
-        this.player.body.velocity.x = -300;
+        this.player.setVelocityX(-100);
     }
     else if (this.cursors.right.isDown)
     {
-        console.log('up');
-        this.player.body.moveRight(300);
+        console.log('right');
+        this.player.setVelocityX(100)
     }
 
   }
