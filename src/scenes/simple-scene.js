@@ -19,6 +19,7 @@ export class SimpleScene extends Phaser.Scene {
   create() {
     this.add.text(100, 100, 'Hello Player 1!', { fill: '#0f0' });
     this.player = this.physics.add.sprite(100, 450, 'cokecan');
+    this.player.setCollideWorldBounds(true);
     this.cursors = this.input.keyboard.createCursorKeys();
     var platforms = this.physics.add.staticGroup();
     platforms.create(400, 568, 'ground').setScale(2).refreshBody();
@@ -27,6 +28,7 @@ export class SimpleScene extends Phaser.Scene {
     platforms.create(50, 250, 'ground');
     platforms.create(750, 220, 'ground');
     this.physics.add.collider(this.player, platforms);
+    console.log(this.player)
   }
 
   update() {
@@ -52,6 +54,11 @@ export class SimpleScene extends Phaser.Scene {
         console.log('right');
         this.player.setVelocityX(100);
     }
+    else
+    {
+        this.player.setVelocityX(0);
+    }
+
 
   }
 }
