@@ -42,7 +42,7 @@ export class SimpleScene extends Phaser.Scene {
     {
         this.player.setVelocityX(100);
     }
-    else
+    else if (this.player.body.touching.down)
     {
         this.player.setVelocityX(0);
     }
