@@ -1,0 +1,34 @@
+{
+  "name": "phaser3-weapon-plugin",
+  "version": "1.0.0-beta.1",
+  "description": "Weapon Plugin for Phaser 3",
+  "main": "src/main.js",
+  "scripts": {
+    "prebuild": "npm run lint:fix",
+    "build": "webpack",
+    "postbuild": "cp dist/WeaponPlugin.{js,js.map} examples/src/",
+    "examples": "http-server examples/src -p 2234",
+    "lint": "eslint src/**/*",
+    "lint:fix": "eslint src/**/* --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/16patsle/phaser3-weapon-plugin.git"
+  },
+  "author": "Patrick Sletvold",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/16patsle/phaser3-weapon-plugin/issues"
+  },
+  "homepage": "https://github.com/16patsle/phaser3-weapon-plugin#readme",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "http-server": "^0.11.1",
+    "webpack": "^3.10.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.0.0-beta.51",
+    "@babel/preset-env": "^7.0.0-beta.51",
+    "babel-loader": "^8.0.0-beta.3"
+  }
+}

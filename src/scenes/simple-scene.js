@@ -13,14 +13,25 @@ export class SimpleScene extends Phaser.Scene {
   }
 
   preload() {
+    this.load.scenePlugin('WeaponPlugin', '../../assets/phaser3-weapon-plugin/dist/WeaponPlugin.js', 'weaponPlugin', 'weapons');
+    this.load.image('bullet', 'assets/bullet.png');
     this.load.image('cokecan', 'assets/cokecan.png');
-    this.load.image('ground', 'assets/ground.png')
+    this.load.image('ground', 'assets/ground.png');
   }
 
   create() {
+
+    this.weapon = this.weapons.add(30, 'bullet');
+    this.weapon.debugPhysics = true
+    this.weapon.bulletKillType = WeaponPlugin.consts.KILL_WORLD_BOUNDS;
+    this.weapon.bulletLifespan = 500
+    this.weapon.bulletSpeed = 600;
+    this.weapon.fireRate = 100;
+
     this.add.text(100, 100, 'Hello Player 1!', { fill: '#0f0' });
     this.player = this.physics.add.sprite(500, 300, 'cokecan');
     this.player.setCollideWorldBounds(true);
+    this.weapon.trackSprite(this.player, 0, 0, true);
     this.cursors = this.input.keyboard.createCursorKeys();
     var platforms = this.physics.add.staticGroup();
     platforms.create(400, 568, 'ground').setScale(1).refreshBody();
@@ -47,6 +58,9 @@ export class SimpleScene extends Phaser.Scene {
         this.player.setVelocityX(0);
     }
 
+    if (this.cursors.space.isDown) {
+      this.weapon.fire();
+    }
 
   }
 }
