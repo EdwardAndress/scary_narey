@@ -28,20 +28,29 @@ export class SimpleScene extends Phaser.Scene {
       down: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)
     };
 
-    this.player = new Player({
+    // let playerInit = {
+    //   scene: this,
+    //   key: 'cokecan',
+    //   x: 500,
+    //   y: 300
+    // };
+
+    this.player =  new Player({
       scene: this,
       key: 'cokecan',
       x: 500,
       y: 300
     });
 
+    // this.player = this.physics.add.existing(new Player(playerInit));
+
     // this.add.text(100, 100, 'Hello Player 1!', { fill: '#0f0' });
     // this.player = this.physics.add.sprite(500, 300, 'cokecan');
     // this.player.setCollideWorldBounds(true);
     // this.cursors = this.input.keyboard.createCursorKeys();
-    // var platforms = this.physics.add.staticGroup();
-    // platforms.create(400, 568, 'ground').setScale(1).refreshBody();
-    // this.physics.add.collider(this.player, platforms);
+    var platforms = this.physics.add.staticGroup();
+    platforms.create(400, 568, 'ground').setScale(1).refreshBody();
+    this.physics.add.collider(this.player, platforms);
   }
 
   update() {
