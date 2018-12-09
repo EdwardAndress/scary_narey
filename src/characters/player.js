@@ -1,10 +1,8 @@
-export class Player extends Phaser.GameObjects.Sprite {
+// Initially this was an attempt to extend Phaser.Sprite but reverted
+// to Image in case Sprite expects an animation. The result is exactly the same
+export class Player extends Phaser.GameObjects.Image {
   constructor(config) {
     super(config.scene, config.x, config.y, config.key);
-
-    //This is used in https://github.com/nkholski/phaser3-es6-webpack/blob/master/src/sprites/Mario.js
-    //but doesn't seem to be needed
-    // config.scene.physics.world.enable(this);
 
     config.scene.physics.add.existing(this);
     this.body.setCollideWorldBounds(true);
@@ -15,16 +13,14 @@ export class Player extends Phaser.GameObjects.Sprite {
     console.log(this.texture); // The string refers to a real item in the TextureManager
 
     this.setActive(true); // Makes no difference
-    this.setScale(2); // Successfully doubles the size of the collider box
     this.setVisible(true); // Makes no difference
 
     // Doesn't throw an error, so finds texture, but no difference
     this.setTexture('cokecan');
 
     // Shows that we get a different result if what is passed to TextureManager
-    // isn't actually a texture within it. Note no change to the size of the
-    // collider box
-    this.setTexture('why_does_this_not_work');
+    // isn't actually a texture within it.
+    this.setTexture('not_a_valid_name');
     console.log(this.texture);
 
     // End testing section

@@ -21,9 +21,6 @@ export class SimpleScene extends Phaser.Scene {
 
   create() {
 
-    //This is how https://github.com/nkholski/phaser3-es6-webpack takes input.
-    //It seems to be a bit more flexible than createCursorKeys as you can
-    //add any keyboard key in the same way
     this.keys = {
       up: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP),
       left: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT),
