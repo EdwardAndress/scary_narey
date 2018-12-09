@@ -38,10 +38,6 @@ export class SimpleScene extends Phaser.Scene {
       y: 300
     });
 
-    this.player.body.setCollideWorldBounds(true);
-
-
-    this.cursors = this.input.keyboard.createCursorKeys();
     var platforms = this.physics.add.staticGroup();
     platforms.create(400, 568, 'ground').setScale(1).refreshBody();
     this.physics.add.collider(this.player, platforms);
@@ -50,6 +46,6 @@ export class SimpleScene extends Phaser.Scene {
   update() {
 
     this.player.update(this.keys);
-  
+
   }
 }

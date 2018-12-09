@@ -7,7 +7,7 @@ export class Player extends Phaser.GameObjects.Sprite {
     // config.scene.physics.world.enable(this);
 
     config.scene.physics.add.existing(this);
-    // console.log('Player constructor running');
+    this.body.setCollideWorldBounds(true);
   }
 
   update(keys) {
@@ -30,8 +30,6 @@ export class Player extends Phaser.GameObjects.Sprite {
         this.body.setVelocityX(0);
     }
 
-
   }
-
 
 }
