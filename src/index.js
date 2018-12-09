@@ -8,4 +8,14 @@ const gameConfig = {
   scene: SimpleScene,
 };
 
-new Phaser.Game(gameConfig);
+
+class Game extends Phaser.Game {
+	constructor(config) {
+		super(config);
+	}
+}
+
+
+window.onload = () => {
+	const game = new Game(gameConfig);
+};
