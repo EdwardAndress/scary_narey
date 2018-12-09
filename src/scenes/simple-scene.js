@@ -1,3 +1,5 @@
+import { Player } from '../characters/player';
+
 export class SimpleScene extends Phaser.Scene {
 
   constructor() {
@@ -18,6 +20,21 @@ export class SimpleScene extends Phaser.Scene {
   }
 
   create() {
+
+    this.keys = {
+      jump: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP),
+      left: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT),
+      right: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT),
+      down: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)
+    };
+
+    this.player = new Player({
+      scene: this,
+      key: 'cokecan',
+      x: 500,
+      y: 300
+    });
+
     // this.add.text(100, 100, 'Hello Player 1!', { fill: '#0f0' });
     // this.player = this.physics.add.sprite(500, 300, 'cokecan');
     // this.player.setCollideWorldBounds(true);
