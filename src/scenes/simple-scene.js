@@ -16,7 +16,7 @@ export class SimpleScene extends Phaser.Scene {
 
   preload() {
     this.load.image('cokecan', 'assets/cokecan.png');
-    this.load.image('ground', 'assets/ground.png')
+    this.load.image('ground', 'assets/ground.png');
   }
 
   create() {
@@ -33,9 +33,9 @@ export class SimpleScene extends Phaser.Scene {
 
     this.player =  new Player({
       scene: this,
-      key: 'cokecan',
       x: 500,
-      y: 300
+      y: 300,
+      key: 'cokecan'
     });
 
     var platforms = this.physics.add.staticGroup();

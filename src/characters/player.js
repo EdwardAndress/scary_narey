@@ -8,6 +8,27 @@ export class Player extends Phaser.GameObjects.Sprite {
 
     config.scene.physics.add.existing(this);
     this.body.setCollideWorldBounds(true);
+
+    // Following section contains attempts to get texture showing
+
+    console.log(config.key); // The string is being passed as expected
+    console.log(this.texture); // The string refers to a real item in the TextureManager
+
+    this.setActive(true); // Makes no difference
+    this.setScale(2); // Successfully doubles the size of the collider box
+    this.setVisible(true); // Makes no difference
+
+    // Doesn't throw an error, so finds texture, but no difference
+    this.setTexture('cokecan');
+
+    // Shows that we get a different result if what is passed to TextureManager
+    // isn't actually a texture within it. Note no change to the size of the
+    // collider box
+    this.setTexture('why_does_this_not_work');
+    console.log(this.texture);
+
+    // End testing section
+
   }
 
   update(keys) {
