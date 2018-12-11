@@ -22,8 +22,8 @@ export class SimpleScene extends Phaser.Scene {
 
   create() {
 
+    // This doesn't work!
     // var newWeapon = this.weapons.add(30, 'bullet');
-    this.sys.install('WeaponPlugin');
 
     //This is how https://github.com/nkholski/phaser3-es6-webpack takes input.
     //It seems to be a bit more flexible than createCursorKeys as you can
@@ -41,8 +41,6 @@ export class SimpleScene extends Phaser.Scene {
       y: 300,
       key: 'cokecan'
     });
-
-    // var weapon = this.weapon.add(30, bullet);
 
     var platforms = this.physics.add.staticGroup();
     platforms.create(400, 568, 'ground').setScale(1).refreshBody();
