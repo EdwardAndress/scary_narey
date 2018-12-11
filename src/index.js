@@ -16,6 +16,6 @@ class Game extends Phaser.Game {
 }
 
 
-window.onload = () => {
-	const game = new Game(gameConfig);
+window.onload = function() {
+	new Game(gameConfig);
 };
