@@ -5,7 +5,8 @@ const webpack = require('webpack');
 module.exports = {
   entry: {
     app: './src/index.js',
-    'production-dependencies': ['phaser']
+    // Not sure if plugin is needed here. Works without
+    'production-dependencies': ['phaser', 'phaser3-weapon-plugin']
   },
 
   output: {
