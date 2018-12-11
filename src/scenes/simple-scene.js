@@ -1,8 +1,12 @@
+import { Plugin as WeaponPlugin } from 'phaser3-weapon-plugin';
 import { Player } from '../characters/player';
 
 export class SimpleScene extends Phaser.Scene {
 
+
+
   constructor() {
+
     super({
       key: 'level1',
       physics: {
@@ -10,7 +14,15 @@ export class SimpleScene extends Phaser.Scene {
           debug: true,
           gravity: { y: 300}
         }
-      }
+      },
+      // Pretty sure this isn't right and the config ref to the plugins should
+      // be applied to Game. See:
+      // https://github.com/photonstorm/phaser3-examples/blob/master/public/src/plugins/scene%20plugin%20test%202.js
+      // plugins: {
+      //   scene: [
+      //     { key: 'weaponPlugin', plugin: WeaponPlugin, mapping: 'weapons' }
+      //   ]
+      // }
     });
   }
 
@@ -25,9 +37,6 @@ export class SimpleScene extends Phaser.Scene {
     // This doesn't work!
     // var newWeapon = this.weapons.add(30, 'bullet');
 
-    //This is how https://github.com/nkholski/phaser3-es6-webpack takes input.
-    //It seems to be a bit more flexible than createCursorKeys as you can
-    //add any keyboard key in the same way
     this.keys = {
       up: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP),
       left: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT),
@@ -45,6 +54,8 @@ export class SimpleScene extends Phaser.Scene {
     var platforms = this.physics.add.staticGroup();
     platforms.create(400, 568, 'ground').setScale(1).refreshBody();
     this.physics.add.collider(this.player, platforms);
+
+    console.log(this);
   }
 
   update() {
