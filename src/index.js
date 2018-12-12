@@ -24,5 +24,7 @@ class Game extends Phaser.Game {
 
 window.onload = function() {
 	const game = new Game(gameConfig);
+  // Suggest leaving this in semi-permanently as it's useful for almost
+  // all debugging
   console.log(game);
 };

@@ -1,4 +1,3 @@
-import { Plugin as WeaponPlugin } from 'phaser3-weapon-plugin';
 import { Player } from '../characters/player';
 
 export class SimpleScene extends Phaser.Scene {
@@ -23,9 +22,6 @@ export class SimpleScene extends Phaser.Scene {
   }
 
   create() {
-
-    var newWeapon = this.weapons.add(30, 'bullet');
-    console.log(newWeapon);
 
     this.keys = {
       up: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP),
