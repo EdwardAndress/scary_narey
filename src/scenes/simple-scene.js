@@ -3,8 +3,6 @@ import { Player } from '../characters/player';
 
 export class SimpleScene extends Phaser.Scene {
 
-
-
   constructor() {
 
     super({
@@ -14,15 +12,7 @@ export class SimpleScene extends Phaser.Scene {
           debug: true,
           gravity: { y: 300}
         }
-      },
-      // Pretty sure this isn't right and the config ref to the plugins should
-      // be applied to Game. See:
-      // https://github.com/photonstorm/phaser3-examples/blob/master/public/src/plugins/scene%20plugin%20test%202.js
-      // plugins: {
-      //   scene: [
-      //     { key: 'weaponPlugin', plugin: WeaponPlugin, mapping: 'weapons' }
-      //   ]
-      // }
+      }
     });
   }
 
@@ -34,8 +24,8 @@ export class SimpleScene extends Phaser.Scene {
 
   create() {
 
-    // This doesn't work!
-    // var newWeapon = this.weapons.add(30, 'bullet');
+    var newWeapon = this.weapons.add(30, 'bullet');
+    console.log(newWeapon);
 
     this.keys = {
       up: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP),
@@ -55,7 +45,6 @@ export class SimpleScene extends Phaser.Scene {
     platforms.create(400, 568, 'ground').setScale(1).refreshBody();
     this.physics.add.collider(this.player, platforms);
 
-    console.log(this);
   }
 
   update() {
