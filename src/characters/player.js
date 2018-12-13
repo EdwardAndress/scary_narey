@@ -13,7 +13,9 @@ export class Player extends Phaser.GameObjects.Sprite {
 
     this.body.setCollideWorldBounds(true);
 
-    console.log(this.anims);
+    // console.log(this.anims);
+
+    this.facing = 'right';
 
   }
 
@@ -27,10 +29,14 @@ export class Player extends Phaser.GameObjects.Sprite {
     if (keys.left.isDown)
     {
         this.body.setVelocityX(-100);
+        this.setFlipX(true);
+
     }
     else if (keys.right.isDown)
     {
         this.body.setVelocityX(100);
+        this.setFlipX(false);
+
     }
     else if (this.body.touching.down)
     {
