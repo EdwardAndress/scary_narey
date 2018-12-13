@@ -40,6 +40,13 @@ export class SimpleScene extends Phaser.Scene {
       frame: 'robot_walk_000.png'
     });
 
+    let frameNames = this.anims.generateFrameNames('robot',
+                                                    { start: 0,
+                                                      end: 6,
+                                                      zeroPad: 3,
+                                                      prefix:'robot_walk_',
+                                                      suffix:'.png' });
+    console.log(frameNames);
     var platforms = this.physics.add.staticGroup();
     platforms.create(400, 568, 'ground').setScale(1).refreshBody();
     this.physics.add.collider(this.player, platforms);
