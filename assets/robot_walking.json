@@ -1,0 +1,167 @@
+{
+	"textures": [
+		{
+			"image": "robot_walking.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 364,
+				"h": 59
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "robot_walk_000.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 50,
+						"h": 57
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 50,
+						"h": 57
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 50,
+						"h": 57
+					}
+				},
+				{
+					"filename": "robot_walk_001.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 50,
+						"h": 57
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 50,
+						"h": 57
+					},
+					"frame": {
+						"x": 53,
+						"y": 1,
+						"w": 50,
+						"h": 57
+					}
+				},
+				{
+					"filename": "robot_walk_002.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 50,
+						"h": 57
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 50,
+						"h": 57
+					},
+					"frame": {
+						"x": 105,
+						"y": 1,
+						"w": 50,
+						"h": 57
+					}
+				},
+				{
+					"filename": "robot_walk_003.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 50,
+						"h": 57
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 50,
+						"h": 57
+					},
+					"frame": {
+						"x": 157,
+						"y": 1,
+						"w": 50,
+						"h": 57
+					}
+				},
+				{
+					"filename": "robot_walk_004.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 50,
+						"h": 57
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 50,
+						"h": 57
+					},
+					"frame": {
+						"x": 209,
+						"y": 1,
+						"w": 50,
+						"h": 57
+					}
+				},
+				{
+					"filename": "robot_walk_005.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 50,
+						"h": 57
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 50,
+						"h": 57
+					},
+					"frame": {
+						"x": 261,
+						"y": 1,
+						"w": 50,
+						"h": 57
+					}
+				},
+				{
+					"filename": "robot_walk_006.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 50,
+						"h": 57
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 50,
+						"h": 57
+					},
+					"frame": {
+						"x": 313,
+						"y": 1,
+						"w": 50,
+						"h": 57
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:bb0a271a26fef685f760ad1dd7e2adac:5e055897ea8dca5ff95c01f572184c3a:4d19bd247cf0ea26697273ddcff90d8a$"
+	}
+}

@@ -17,8 +17,10 @@ export class SimpleScene extends Phaser.Scene {
 
   preload() {
 
-    this.load.image('cokecan', 'assets/cokecan.png');
+    // this.load.image('cokecan', 'assets/cokecan.png');
+    this.load.multiatlas('robot', 'assets/robot_walking.json', 'assets');
     this.load.image('ground', 'assets/ground.png');
+
   }
 
   create() {
@@ -34,12 +36,15 @@ export class SimpleScene extends Phaser.Scene {
       scene: this,
       x: 500,
       y: 300,
-      key: 'cokecan'
+      key: 'robot',
+      frame: 'robot_walk_000.png'
     });
 
     var platforms = this.physics.add.staticGroup();
     platforms.create(400, 568, 'ground').setScale(1).refreshBody();
     this.physics.add.collider(this.player, platforms);
+
+    console.log(this.anims);
 
   }
 

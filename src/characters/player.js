@@ -1,6 +1,6 @@
 export class Player extends Phaser.GameObjects.Sprite {
   constructor(config) {
-    super(config.scene, config.x, config.y, config.key);
+    super(config.scene, config.x, config.y, config.key, config.frame);
 
 
     config.scene.sys.displayList.add(this);
@@ -12,6 +12,8 @@ export class Player extends Phaser.GameObjects.Sprite {
     config.scene.sys.arcadePhysics.world.enableBody(this);
 
     this.body.setCollideWorldBounds(true);
+
+    console.log(this.anims);
 
   }
 
