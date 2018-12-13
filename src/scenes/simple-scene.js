@@ -17,7 +17,6 @@ export class SimpleScene extends Phaser.Scene {
 
   preload() {
 
-    // this.load.image('cokecan', 'assets/cokecan.png');
     this.load.multiatlas('robot', 'assets/robot_walking.json', 'assets');
     this.load.image('ground', 'assets/ground.png');
 
@@ -37,26 +36,16 @@ export class SimpleScene extends Phaser.Scene {
       x: 500,
       y: 300,
       key: 'robot',
-      frame: 'robot_walk_000.png'
+      frame: 'robot_walk_000.png',
+      anim: {
+        framePrefix: 'robot_walk_',
+        lastFrame: 6
+      }
     });
-
-    let frameNames = this.anims.generateFrameNames('robot',
-                                                    { start: 0,
-                                                      end: 6,
-                                                      zeroPad: 3,
-                                                      prefix:'robot_walk_',
-                                                      suffix:'.png' });
-    console.log(frameNames);
-
-    this.anims.create({ key: 'walk', frames: frameNames, frameRate: 10, repeat: -1 });
-    this.player.anims.play('walk');
-
 
     var platforms = this.physics.add.staticGroup();
     platforms.create(400, 568, 'ground').setScale(1).refreshBody();
     this.physics.add.collider(this.player, platforms);
-
-    console.log(this.anims);
 
   }
 
