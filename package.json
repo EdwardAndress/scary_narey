@@ -16,6 +16,7 @@
     "webpack-dev-server": "^2.0.0"
   },
   "dependencies": {
-    "phaser": "^3.0.0"
+    "phaser": "^3.0.0",
+    "phaser3-weapon-plugin": "^1.0.0-beta.1"
   }
 }
