@@ -1,4 +1,3 @@
-import { Plugin as WeaponPlugin } from 'phaser3-weapon-plugin';
 import { Player } from '../characters/player';
 
 export class SimpleScene extends Phaser.Scene {
@@ -18,14 +17,12 @@ export class SimpleScene extends Phaser.Scene {
 
   preload() {
 
-    this.load.image('cokecan', 'assets/cokecan.png');
+    this.load.multiatlas('robot', 'assets/robot_walking.json', 'assets');
     this.load.image('ground', 'assets/ground.png');
+
   }
 
   create() {
-
-    var newWeapon = this.weapons.add(30, 'bullet');
-    console.log(newWeapon);
 
     this.keys = {
       up: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP),
@@ -38,7 +35,12 @@ export class SimpleScene extends Phaser.Scene {
       scene: this,
       x: 500,
       y: 300,
-      key: 'cokecan'
+      key: 'robot',
+      frame: 'robot_walk_000.png',
+      anim: {
+        framePrefix: 'robot_walk_',
+        lastFrame: 6
+      }
     });
 
     var platforms = this.physics.add.staticGroup();
