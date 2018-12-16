@@ -1,0 +1,9 @@
+main_player_prototype_sep_feet
+
+First full prototype. PikoPixel format. Front and rear feet are each separated into right/left pairs, each in its own layer. 
+
+main_player_prototype
+
+As main_player_prototype_sep_feet but the rear foot and front foot are each a single piece (right and left merged in each case) as separate pieces not needed for a simple animation. 
+
+Thought a bit more about kinematics. Initially imagined each leg as a solid piece, with the visible leg retracting into leg fitting as part of walking motion, but this is more complext than a simple joint. Without some sort of retraction, the body would have to tip to allow each foot to lift, which is another (major) complication. So split each leg into two to create a knee.
