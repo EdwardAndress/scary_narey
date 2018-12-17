@@ -1,4 +1,6 @@
 import { Player } from '../characters/player';
+import { addPlatforms } from '../environment/platforms.js'
+
 
 export class SimpleScene extends Phaser.Scene {
 
@@ -19,6 +21,8 @@ export class SimpleScene extends Phaser.Scene {
 
     this.load.multiatlas('robot', 'assets/robot_walking.json', 'assets');
     this.load.image('ground', 'assets/ground.png');
+    this.load.image('background', 'assets/third_party/background_96x96.png');
+    this.load.image('platform', 'assets/third_party/platform_64x64.png');
 
   }
 
@@ -43,9 +47,12 @@ export class SimpleScene extends Phaser.Scene {
       }
     });
 
-    var platforms = this.physics.add.staticGroup();
-    platforms.create(400, 568, 'ground').setScale(1).refreshBody();
-    this.physics.add.collider(this.player, platforms);
+    let platforms = addPlatforms(this);
+
+    // var platforms = this.physics.add.staticGroup();
+    // platforms.create(400, 568, 'ground').setScale(1).refreshBody();
+    // platforms.create(48, 500, 'platform').setScale(1).refreshBody();
+    // this.physics.add.collider(this.player, platforms);
 
   }
 
