@@ -53,7 +53,6 @@ export class SimpleScene extends Phaser.Scene {
 
     // this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.cameras.main.startFollow(this.player);
-    // worldLayer.setCollision();
     worldLayer.setCollisionByProperty({ collides: true });
     this.physics.add.collider(this.player, worldLayer);
 

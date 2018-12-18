@@ -32,7 +32,7 @@ export class Player extends Phaser.GameObjects.Sprite {
     // The logic here needs some straightforward work to stop the walking anim
     // while in mid-air
 
-    if (keys.up.isDown && this.body.touching.down)
+    if (keys.up.isDown && this.body.blocked.down)
     {
         this.body.setVelocityY(-300);
         this.anims.pause();
@@ -52,7 +52,7 @@ export class Player extends Phaser.GameObjects.Sprite {
         this.anims.resume();
 
     }
-    else if (this.body.touching.down)
+    else if (this.body.blocked.down)
     {
         this.body.setVelocityX(0);
         this.anims.pause();
