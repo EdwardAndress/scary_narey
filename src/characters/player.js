@@ -6,6 +6,8 @@ export class Player extends Phaser.GameObjects.Sprite {
     this.scene.sys.displayList.add(this);
     this.scene.sys.updateList.add(this);
     this.scene.sys.arcadePhysics.world.enableBody(this);
+
+    // Consider removing this if walls retained
     this.body.setCollideWorldBounds(true);
 
     this.createWalkAnimation(config.anim);
