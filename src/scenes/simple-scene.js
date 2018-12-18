@@ -19,12 +19,9 @@ export class SimpleScene extends Phaser.Scene {
 
   preload() {
 
-    this.load.multiatlas('robot', 'assets/robot_walking.json', 'assets');
-    this.load.image('tiles', 'assets/third_party/tileset_test_288x96.png');
-    this.load.tilemapTiledJSON("map", "assets/test1.json");
-    // this.load.image('ground', 'assets/ground.png');
-    // this.load.image('background', 'assets/third_party/background_96x96.png');
-    // this.load.image('platform', 'assets/third_party/platform_64x64.png');
+    this.load.multiatlas('robot', 'assets/player/robot_walking.json', 'assets');
+    this.load.image('tiles', 'assets/environment/third_party/basic_tileset_144x48.png');
+    this.load.tilemapTiledJSON("map", "assets/environment/basic_horiz_map.json");
 
   }
 
@@ -38,9 +35,7 @@ export class SimpleScene extends Phaser.Scene {
     };
 
     const map = this.make.tilemap({ key: "map"});
-    const tileset = map.addTilesetImage("tileset_test_288x96", "tiles");
-
-    // Parameters: layer name (or index) from Tiled, tileset, x, y
+    const tileset = map.addTilesetImage("basic_48_tiles", "tiles");
     const belowLayer = map.createStaticLayer("background", tileset, 0, 0);
     const worldLayer = map.createStaticLayer("solid", tileset, 0, 0);
 
@@ -56,11 +51,12 @@ export class SimpleScene extends Phaser.Scene {
       }
     });
 
-    // let platform_test = addPlatforms(this);
+    // this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+    this.cameras.main.startFollow(this.player);
+    // worldLayer.setCollision();
+    worldLayer.setCollisionByProperty({ collides: true });
+    this.physics.add.collider(this.player, worldLayer);
 
-    // var platforms = this.physics.add.staticGroup();
-    // platforms.create(400, 568, 'ground').setScale(1).refreshBody();
-    // this.physics.add.collider(this.player, platforms);
 
   }
 
