@@ -1,4 +1,4 @@
-import { Player } from '../characters/player';
+import { Player } from '../characters/player3';
 // import { addPlatforms } from '../environment/platforms.js'
 
 
