@@ -1,22 +1,28 @@
-export class Player extends Phaser.GameObjects.Sprite {
+export class Player {
+
   constructor(config) {
-    super(config.scene, config.x, config.y, config.key, config.frame);
 
+    this.scene = config.scene;
 
-    this.scene.sys.displayList.add(this);
-    this.scene.sys.updateList.add(this);
-    this.scene.sys.arcadePhysics.world.enableBody(this);
+    this.sprite = new Phaser.GameObjects.Sprite(config.scene,
+                                                config.x,
+                                                config.y,
+                                                config.key,
+                                                config.frame);
 
-    // Consider removing this if walls retained
-    this.body.setCollideWorldBounds(true);
+    this.scene.sys.displayList.add(this.sprite);
+    this.scene.sys.updateList.add(this.sprite);
+    this.scene.sys.arcadePhysics.world.enableBody(this.sprite);
+    this.sprite.body.setCollideWorldBounds(true);
 
     this.createWalkAnimation(config.anim);
-    this.anims.play('walk');
+    this.sprite.anims.play('walk');
 
   }
 
   createWalkAnimation(animConfig) {
-    let frameNames = this.scene.anims.generateFrameNames(this.texture.key,
+
+    let frameNames = this.scene.anims.generateFrameNames(this.sprite.texture.key,
                                                         { start: 0,
                                                           end: animConfig.lastFrame,
                                                           zeroPad: 3,
@@ -29,37 +35,32 @@ export class Player extends Phaser.GameObjects.Sprite {
                               repeat: -1 });
   }
 
+
   update(keys) {
-
-    // The logic here needs some straightforward work to stop the walking anim
-    // while in mid-air
-
-    if (keys.up.isDown && this.body.blocked.down)
+    if (keys.up.isDown && this.sprite.body.blocked.down)
     {
-        this.body.setVelocityY(-300);
-        this.anims.pause();
+        this.sprite.body.setVelocityY(-300);
+        this.sprite.anims.pause();
     }
 
     if (keys.left.isDown)
     {
-        this.body.setVelocityX(-100);
-        this.setFlipX(true);
-        this.anims.resume();
+        this.sprite.body.setVelocityX(-100);
+        this.sprite.setFlipX(true);
+        this.sprite.anims.resume();
 
     }
     else if (keys.right.isDown)
     {
-        this.body.setVelocityX(100);
-        this.setFlipX(false);
-        this.anims.resume();
+        this.sprite.body.setVelocityX(100);
+        this.sprite.setFlipX(false);
+        this.sprite.anims.resume();
 
     }
-    else if (this.body.blocked.down)
+    else if (this.sprite.body.blocked.down)
     {
-        this.body.setVelocityX(0);
-        this.anims.pause();
+        this.sprite.body.setVelocityX(0);
+        this.sprite.anims.pause();
     }
-
   }
-
 }

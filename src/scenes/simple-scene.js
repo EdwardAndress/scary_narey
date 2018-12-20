@@ -1,6 +1,4 @@
-import { Player } from '../characters/player4';
-// import { addPlatforms } from '../environment/platforms.js'
-
+import { Player } from '../characters/player';
 
 export class SimpleScene extends Phaser.Scene {
 
