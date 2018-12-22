@@ -17,7 +17,7 @@ export class SimpleScene extends Phaser.Scene {
 
   preload() {
 
-    this.load.multiatlas('robot', 'assets/player/robot_walking.json', 'assets');
+    this.load.multiatlas('robot', 'assets/player/robot_walking.json', 'assets/player');
     this.load.image('tiles', 'assets/environment/third_party/basic_tileset_144x48.png');
     this.load.tilemapTiledJSON("map", "assets/environment/basic_horiz_map.json");
 
