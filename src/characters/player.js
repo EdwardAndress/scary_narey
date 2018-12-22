@@ -17,6 +17,8 @@ export class Player {
 
     this.createWalkAnimation(config.anim);
     this.sprite.anims.play('walk');
+    // If this becomes two player, this might be better in scene
+    this.scene.cameras.main.startFollow(this.sprite);
 
   }
 
