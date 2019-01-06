@@ -17,8 +17,9 @@ export class SimpleScene extends Phaser.Scene {
 
   preload() {
 
-    this.load.multiatlas('robot', 'assets/robot_walking.json', 'assets');
-    this.load.image('ground', 'assets/ground.png');
+    this.load.multiatlas('robot', 'assets/player/robot_walking.json', 'assets/player');
+    this.load.image('tiles', 'assets/environment/third_party/basic_tileset_144x48.png');
+    this.load.tilemapTiledJSON("map", "assets/environment/basic_horiz_map.json");
 
   }
 
@@ -30,6 +31,11 @@ export class SimpleScene extends Phaser.Scene {
       right: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT),
       down: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)
     };
+
+    const map = this.make.tilemap({ key: "map"});
+    const tileset = map.addTilesetImage("basic_48_tiles", "tiles");
+    const belowLayer = map.createStaticLayer("background", tileset, 0, 0);
+    const worldLayer = map.createStaticLayer("solid", tileset, 0, 0);
 
     this.player =  new Player({
       scene: this,
@@ -43,9 +49,9 @@ export class SimpleScene extends Phaser.Scene {
       }
     });
 
-    var platforms = this.physics.add.staticGroup();
-    platforms.create(400, 568, 'ground').setScale(1).refreshBody();
-    this.physics.add.collider(this.player, platforms);
+    worldLayer.setCollisionByProperty({ collides: true });
+    this.physics.add.collider(this.player.sprite, worldLayer);
+
 
   }
 

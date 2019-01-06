@@ -4,8 +4,8 @@ import { SimpleScene } from './scenes/simple-scene';
 
 
 const gameConfig = {
-  width: 800,
-  height: 600,
+  width: 1536,
+  height: 768,
   scene: SimpleScene,
   plugins: {
     scene: [
