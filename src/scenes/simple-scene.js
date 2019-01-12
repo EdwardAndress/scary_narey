@@ -15,7 +15,6 @@ export class SimpleScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.scenePlugin('WeaponPlugin', '../../assets/phaser3-weapon-plugin/dist/WeaponPlugin.js', 'weaponPlugin', 'weapons');
     this.load.image('bullet', 'assets/bullet.png');
     this.load.multiatlas('robot', 'assets/player/robot_walking.json', 'assets/player');
     this.load.image('tiles', 'assets/environment/third_party/basic_tileset_144x48.png');

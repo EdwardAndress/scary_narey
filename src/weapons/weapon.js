@@ -1,3 +1,5 @@
+import WeaponPlugin from 'phaser3-weapon-plugin';
+
 export class Weapon {
 
   constructor(player) {

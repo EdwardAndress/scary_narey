@@ -54,6 +54,7 @@ export class Player {
 
     if (keys.left.isDown)
     {
+        this.weapon.bullets.bulletSpeed = -600;
         this.sprite.body.setVelocityX(-100);
         this.sprite.setFlipX(true);
         this.sprite.anims.resume();
@@ -61,6 +62,7 @@ export class Player {
     }
     else if (keys.right.isDown)
     {
+        this.weapon.bullets.bulletSpeed = 600;
         this.sprite.body.setVelocityX(100);
         this.sprite.setFlipX(false);
         this.sprite.anims.resume();
