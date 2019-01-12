@@ -1,24 +1,26 @@
 import { addWeapon } from './weapon.js'
 
-export function addPlayerWithWeapon(scene) {
-  var newPlayer = scene.physics.add.sprite(500, 300, 'cokecan');
-  newPlayer.setCollideWorldBounds(true);
-  newPlayer.weapon = addWeapon(scene);
-  newPlayer.weapon.trackSprite(newPlayer, 0, 0, true);
+export class Player {
 
-  newPlayer.jump = function() {
-    this.setVelocityY(-300);
+  constructor(scene) {
+    this.scene = scene;
+    this.sprite = scene.physics.add.sprite(500, 300, 'cokecan');
+    this.sprite.setCollideWorldBounds(true);
+    this.weapon = addWeapon(scene);
+    this.weapon.trackSprite(this.sprite, 0, 0, true);
   }
 
-  newPlayer.move_left = function() {
+  jump() {
+    this.sprite.setVelocityY(-300);
+  }
+
+  walk_left() {
     this.weapon.bulletSpeed = -600;
-    this.setVelocityX(-100);
+    this.sprite.setVelocityX(-100);
   }
 
-  newPlayer.move_right = function() {
+  walk_right() {
     this.weapon.bulletSpeed = 600;
-    this.setVelocityX(100);
+    this.sprite.setVelocityX(100);
   }
-
-  return(newPlayer);
 }
