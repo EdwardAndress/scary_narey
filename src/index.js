@@ -1,17 +1,11 @@
 import 'phaser';
-import WeaponPlugin from 'phaser3-weapon-plugin';
 import { SimpleScene } from './scenes/simple-scene';
 
 
 const gameConfig = {
   width: 1536,
   height: 768,
-  scene: SimpleScene,
-  plugins: {
-    scene: [
-      { key: 'weaponPlugin', plugin: WeaponPlugin, mapping: 'weapons' }
-    ]
-  }
+  scene: SimpleScene
 };
 
 

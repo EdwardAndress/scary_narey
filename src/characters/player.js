@@ -1,3 +1,5 @@
+import { Weapon } from '../weapons/weapon.js'
+
 export class Player {
 
   constructor(config) {
@@ -10,16 +12,15 @@ export class Player {
                                                 config.key,
                                                 config.frame);
 
+    this.weapon = new Weapon(this);
     this.scene.sys.displayList.add(this.sprite);
     this.scene.sys.updateList.add(this.sprite);
     this.scene.sys.arcadePhysics.world.enableBody(this.sprite);
     this.sprite.body.setCollideWorldBounds(true);
-
     this.createWalkAnimation(config.anim);
     this.sprite.anims.play('walk');
     // If this becomes two player, this might be better in scene
-    this.scene.cameras.main.startFollow(this.sprite);
-
+    // this.scene.cameras.main.startFollow(this.sprite);
   }
 
   createWalkAnimation(animConfig) {
@@ -39,6 +40,12 @@ export class Player {
 
 
   update(keys) {
+
+    if (keys.space.isDown) {
+      console.log('fire!')
+      this.weapon.bullets.fire();
+    }
+
     if (keys.up.isDown && this.sprite.body.blocked.down)
     {
         this.sprite.body.setVelocityY(-300);

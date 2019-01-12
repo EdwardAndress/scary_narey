@@ -1,9 +1,8 @@
-import { Player } from '../characters/player';
+import { Player } from '../characters/player.js';
 
 export class SimpleScene extends Phaser.Scene {
 
   constructor() {
-
     super({
       key: 'level1',
       physics: {
@@ -18,19 +17,18 @@ export class SimpleScene extends Phaser.Scene {
   preload() {
     this.load.scenePlugin('WeaponPlugin', '../../assets/phaser3-weapon-plugin/dist/WeaponPlugin.js', 'weaponPlugin', 'weapons');
     this.load.image('bullet', 'assets/bullet.png');
-
     this.load.multiatlas('robot', 'assets/player/robot_walking.json', 'assets/player');
     this.load.image('tiles', 'assets/environment/third_party/basic_tileset_144x48.png');
     this.load.tilemapTiledJSON("map", "assets/environment/basic_horiz_map.json");
   }
 
   create() {
-
     this.keys = {
       up: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP),
       left: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT),
       right: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT),
-      down: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)
+      down: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN),
+      space: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
     };
 
     const map = this.make.tilemap({ key: "map"});
@@ -52,13 +50,9 @@ export class SimpleScene extends Phaser.Scene {
 
     worldLayer.setCollisionByProperty({ collides: true });
     this.physics.add.collider(this.player.sprite, worldLayer);
-
-
   }
 
   update() {
-
     this.player.update(this.keys);
-
   }
 }
