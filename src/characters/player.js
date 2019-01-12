@@ -1,4 +1,4 @@
-import { Weapon } from '../weapons/weapon.js'
+import { Weapon } from '../weapons/weapon'
 
 export class Player {
 
