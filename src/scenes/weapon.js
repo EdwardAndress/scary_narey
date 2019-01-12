@@ -1,10 +1,17 @@
-export function addWeapon(scene) {
-  var newWeapon = scene.weapons.add(30, 'bullet');
-  newWeapon.debugPhysics = true;
-  newWeapon.bulletKillType = WeaponPlugin.consts.KILL_WORLD_BOUNDS;
-  newWeapon.bulletLifespan = 500
-  newWeapon.fireRate = 100;
-  newWeapon.bulletSpeed = 600;
+export class Weapon {
 
-  return(newWeapon);
+  constructor(scene, player) {
+    this.bullets = scene.weapons.add(30, 'bullet');
+    this.bullets.debugPhysics = true;
+    this.bullets.bulletKillType = WeaponPlugin.consts.KILL_WORLD_BOUNDS;
+    this.bullets.bulletLifespan = 500
+    this.bullets.fireRate = 100;
+    this.bullets.bulletSpeed = 600;
+    this.bullets.fireAngle = 0;
+    this.bullets.trackSprite(player.sprite);
+  }
+
+  setBulletSpeed(int) {
+    this.bullets.bulletSpeed = int;
+  }
 }
