@@ -38,40 +38,42 @@ export class Player {
                               repeat: -1 });
   }
 
+  walkLeft() {
+    this.sprite.body.setVelocityX(-100);
+    this.sprite.setFlipX(true);
+    this.sprite.anims.resume();
+  }
+
+  walkRight() {
+    this.sprite.body.setVelocityX(100);
+    this.sprite.setFlipX(false);
+    this.sprite.anims.resume();
+  }
+
+  standStill() {
+    this.sprite.body.setVelocityX(0);
+    this.sprite.anims.pause();
+  }
+
+  jump() {
+    this.sprite.body.setVelocityY(-300);
+    this.sprite.anims.pause();
+  }
 
   update(keys) {
 
-    if (keys.space.isDown) {
-      console.log('fire!')
-      this.weapon.bullets.fire();
-    }
+    if (keys.space.isDown) { this.weapon.bullets.fire(); }
 
-    if (keys.up.isDown && this.sprite.body.blocked.down)
-    {
-        this.sprite.body.setVelocityY(-300);
-        this.sprite.anims.pause();
-    }
+    if (keys.up.isDown && this.sprite.body.blocked.down) { this.jump(); }
 
-    if (keys.left.isDown)
-    {
-        this.weapon.bullets.bulletSpeed = -600;
-        this.sprite.body.setVelocityX(-100);
-        this.sprite.setFlipX(true);
-        this.sprite.anims.resume();
-
-    }
-    else if (keys.right.isDown)
-    {
-        this.weapon.bullets.bulletSpeed = 600;
-        this.sprite.body.setVelocityX(100);
-        this.sprite.setFlipX(false);
-        this.sprite.anims.resume();
-
-    }
-    else if (this.sprite.body.blocked.down)
-    {
-        this.sprite.body.setVelocityX(0);
-        this.sprite.anims.pause();
+    if (keys.left.isDown) {
+        this.weapon.aimLeft();
+        this.walkLeft();
+    } else if (keys.right.isDown) {
+        this.weapon.aimRight();
+        this.walkRight();
+    } else if (this.sprite.body.blocked.down) {
+        this.standStill();
     }
   }
 }

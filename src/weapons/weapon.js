@@ -11,5 +11,16 @@ export class Weapon {
     this.bullets.bulletSpeed = 600;
     this.bullets.fireAngle = 0;
     this.bullets.trackSprite(player.sprite);
+    this.bullets.trackOffset.y = -10;
+  }
+
+  aimLeft() {
+    this.bullets.trackOffset.x = -20;
+    this.bullets.bulletSpeed = -600;
+  }
+
+  aimRight() {
+    this.bullets.trackOffset.x = 20;
+    this.bullets.bulletSpeed = 600;
   }
 }
